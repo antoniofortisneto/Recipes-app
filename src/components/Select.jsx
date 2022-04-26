@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styles from '../styles/formWallet.module.css';
+// import styles from '../styles/formWallet.module.css';
 
 class Select extends Component {
   render() {
@@ -15,7 +15,7 @@ class Select extends Component {
       options,
     } = this.props;
     return (
-      <div className={ styles.input__container }>
+      <div className="">
         <label htmlFor={ name }>
           { label }
         </label>
@@ -27,7 +27,6 @@ class Select extends Component {
           onChange={ onChange }
           value={ value }
         >
-          {/*   <option value={ defaultValue }>{ defaultOption }</option> */ }
           {
             options.map((option, index) => (
               <option key={ index }>{ option }</option>

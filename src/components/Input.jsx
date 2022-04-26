@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styles from '../styles/formWallet.module.css';
+// import styles from '../styles/formWallet.module.css';
 
 class Input extends Component {
   render() {
     const { type, name, label, onChange, value, placeholder, id } = this.props;
     return (
-      <div className={ styles.input__container }>
+      <div className="">
         <label htmlFor={ name }>
           { label }
         </label>
