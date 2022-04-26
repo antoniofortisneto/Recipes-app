@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import './App.css';
 /* import rockGlass from './images/rockGlass.svg'; */
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Login from './pages/Login';
 // import { CATEGORIES, getAllFood } from './services/apiFood';
 import { SEARCH, getAllDrinks } from './services/apiDrink';
 
@@ -12,7 +13,9 @@ function App() {
   }, []);
 
   return (
-    <section>fsdfds</section>
+    <section>
+      <Login />
+    </section>
     /* <Switch>
       <Route exact path="/" component={ {} } />
     </Switch> */
