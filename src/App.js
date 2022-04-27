@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
-// import { Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import './App.css';
 /* import rockGlass from './images/rockGlass.svg'; */
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Login from './pages/Login';
 // import { CATEGORIES, getAllFood } from './services/apiFood';
 import { SEARCH, getAllDrinks } from './services/apiDrink';
 
@@ -12,10 +13,9 @@ function App() {
   }, []);
 
   return (
-    <section>fsdfds</section>
-    /* <Switch>
-      <Route exact path="/" component={ {} } />
-    </Switch> */
+    <Switch>
+      <Route exact path="/" component={ Login } />
+    </Switch>
   );
 }
 
