@@ -1,9 +1,10 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Login from './pages/Login';
-import Foods from './pages/Foods';
+import MainContainer from './pages/MainContainer';
+// import Foods from './pages/Foods';
 import Profile from './pages/Profile';
-import Drinks from './pages/Drinks';
+// import Drinks from './pages/Drinks';
 import Explore from './pages/Explore';
 import ExploreFoods from './pages/ExploreFoods';
 import ExploreDrinks from './pages/ExploreDrinks';
@@ -19,8 +20,8 @@ function App() {
     <Provider>
       <Switch>
         <Route exact path="/" component={ Login } />
-        <Route exact path="/foods" component={ Foods } />
-        <Route exact path="/drinks" component={ Drinks } />
+        <Route exact path="/foods" component={ MainContainer } />
+        <Route exact path="/drinks" component={ MainContainer } />
         <Route exact path="/explore" component={ Explore } />
         <Route exact path="/explore/foods" component={ ExploreFoods } />
         <Route exact path="/explore/drinks" component={ ExploreDrinks } />
