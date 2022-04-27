@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import styles from '../styles/formWallet.module.css';
 
 class Input extends Component {
   render() {
@@ -33,7 +32,7 @@ Input.propTypes = {
   name: PropTypes.string,
   placeholder: PropTypes.string,
   id: PropTypes.string,
-  onChange: PropTypes.func,
+  onChange: PropTypes.func.isRequired,
 };
 
 Input.defaultProps = {
@@ -42,7 +41,6 @@ Input.defaultProps = {
   name: '',
   placeholder: '',
   id: PropTypes.string,
-  onChange: null,
 };
 
 export default Input;

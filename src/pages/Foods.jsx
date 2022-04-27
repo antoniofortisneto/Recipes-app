@@ -12,6 +12,7 @@ function Foods() {
         <Input
           type="text"
           value=""
+          onChange={ () => {} }
           placeholder="Search Recipe"
           id="search-input"
         />
