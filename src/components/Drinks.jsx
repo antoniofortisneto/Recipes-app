@@ -1,12 +1,9 @@
 import React from 'react';
-import Header from './Header';
-import Footer from './Footer';
 
 function Drinks() {
   return (
     <section>
-      <Header title="Drinks" showSearch />
-      <Footer />
+      <h1>drinks</h1>
     </section>
   );
 }
