@@ -5,7 +5,7 @@ export const AREA = 'list.php?a=';
 export const CATEGORIES = 'list.php?c=';
 export const INGREDIENTES = 'list.php?i=';
 
-export const getAllFood = async (parameter, type) => {
+export const getAllFood = async (parameter, type = '') => {
   const response = await fetch(`${URL}${parameter}${type}`);
   // console.log(`${URL}${parameter}${type}`);
   const json = await response.json();
