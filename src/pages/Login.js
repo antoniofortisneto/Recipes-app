@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [buttonState, setButtonState] = useState(false);
+  const [buttonState, setButtonState] = useState(true);
   const history = useHistory(); // https://reactrouter.com/docs/en/v6/upgrading/v5
 
   function validationCheck() {
