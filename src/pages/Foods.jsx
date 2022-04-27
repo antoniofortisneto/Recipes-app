@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import Header from '../components/Header';
 import context from '../context';
 import { Input } from '../components';
+import Footer from '../components/Footer';
 
 function Foods() {
   const { isSearchClicked } = useContext(context);
@@ -17,6 +18,7 @@ function Foods() {
           id="search-input"
         />
       ) }
+      <Footer />
     </section>
   );
 }
