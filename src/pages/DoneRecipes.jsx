@@ -1,10 +1,10 @@
 import React from 'react';
 import Header from '../components/Header';
 
-function Profile() {
+function DoneRecipes() {
   return (
-    <Header title="Profile" />
+    <Header title="Done Recipes" />
   );
 }
 
-export default Profile;
+export default DoneRecipes;

@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Header from '../components/Header';
+import context from '../context';
+import { Input } from '../components';
 
 function Foods() {
+  const { isSearchClicked } = useContext(context);
   return (
-    <Header title="Foods" />
+    <section>
+      <Header title="Foods" showSearch />
+      { isSearchClicked && (
+        <Input
+          type="text"
+          value=""
+          placeholder="Search Recipe"
+          id="search-input"
+        />
+      ) }
+    </section>
   );
 }
 
