@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [buttonState, setButtonState] = useState(true);
+  const [buttonState, setButtonState] = useState(false);
+  const history = useHistory(); // https://reactrouter.com/docs/en/v6/upgrading/v5
 
   function validationCheck() {
     const minNumber = 6;
@@ -15,9 +17,18 @@ export default function Login() {
     }
   }
 
+  function handleSubmit(event) {
+    event.preventDefault();
+    console.log('form submetido');
+    localStorage.setItem('mealsToken', JSON.stringify(1));
+    localStorage.setItem('cocktailsToken', JSON.stringify(1));
+    localStorage.setItem('user', JSON.stringify({ email }));
+    history.push('/foods');
+  }
+
   return (
     <div>
-      <form onSubmit={ () => console.log('hello') }>
+      <form onSubmit={ handleSubmit }>
         <h1>Login</h1>
         <label htmlFor="email-input">
           <input

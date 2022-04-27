@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-// import { Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import './App.css';
 /* import rockGlass from './images/rockGlass.svg'; */
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -13,12 +13,9 @@ function App() {
   }, []);
 
   return (
-    <section>
-      <Login />
-    </section>
-    /* <Switch>
-      <Route exact path="/" component={ {} } />
-    </Switch> */
+    <Switch>
+      <Route exact path="/" component={ Login } />
+    </Switch>
   );
 }
 
