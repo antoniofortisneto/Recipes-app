@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import Search from '../components/Search';
 import Foods from '../components/Foods';
 import Drinks from '../components/Drinks';
+import Footer from '../components/Footer';
 
 function MainContainer() {
   const history = useHistory();
@@ -17,6 +18,7 @@ function MainContainer() {
         : <Header title="Drinks" showSearch />}
       { isSearchClicked && <Search /> }
       { isFoods ? <Foods /> : <Drinks /> }
+      <Footer />
     </section>
   );
 }
