@@ -1,8 +1,13 @@
 import React from 'react';
+import Header from './Header';
+import Footer from './Footer';
 
 function Drinks() {
   return (
-    <h1>Drinks</h1>
+    <section>
+      <Header title="Drinks" showSearch />
+      <Footer />
+    </section>
   );
 }
 
