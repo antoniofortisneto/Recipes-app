@@ -15,13 +15,8 @@ function useRequestFoods() {
         global.alert('Your search must have only 1 (one) character');
       }
       const parameter = getParameterSearchMeal(searchType);
-      try {
-        const { meals } = await requestFoods(`${parameter}${search}`);
-        setData(meals);
-      } catch (error) {
-        setData('Não foi encontrado nada na busca');
-        global.alert('Sorry, we haven\'t found any recipes for these filters.');
-      }
+      const { meals } = await requestFoods(`${parameter}${search}`);
+      setData(meals);
     };
     request();
   }, [search, searchType]);

@@ -13,13 +13,8 @@ function useRequestDrinks() {
         global.alert('Your search must have only 1 (one) character');
       }
       const parameter = getParameterSearchDrink(searchType);
-      try {
-        const { drinks } = await requestDrinks(`${parameter}${search}`);
-        setData(drinks);
-      } catch (error) {
-        setData('Não foi encontrado nada na busca');
-        global.alert('Sorry, we haven\'t found any recipes for these filters.');
-      }
+      const { drinks } = await requestDrinks(`${parameter}${search}`);
+      setData(drinks);
     };
     request();
   }, [search, searchType]);
