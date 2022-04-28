@@ -18,6 +18,7 @@ function useRequestDrinks() {
         setData(drinks);
       } catch (error) {
         setData('Não foi encontrado nada na busca');
+        global.alert('Sorry, we haven\'t found any recipes for these filters.');
       }
     };
     request();
