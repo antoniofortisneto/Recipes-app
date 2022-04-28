@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Input } from '.';
+import context from '../context';
 
 function Search() {
+  const { saveSearch } = useContext(context);
   const [search, setSearch] = useState('');
   const [searchType, setSearchType] = useState('');
-  console.log(searchType);
 
   const handleSearch = ({ target: { value } }) => setSearch(value);
   const handleType = ({ target: { value } }) => setSearchType(value);
-  const handleButtonClick = () => {};
+  const handleButtonClick = () => saveSearch(search, searchType);
 
   return (
     <>
