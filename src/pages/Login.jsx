@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 export default function Login() {
@@ -6,16 +6,6 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [buttonState, setButtonState] = useState(true);
   const history = useHistory(); // https://reactrouter.com/docs/en/v6/upgrading/v5
-
-  function validationCheck() {
-    const minNumber = 6;
-    if (email.match(/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/) // https://regexr.com/3e48o
-      && password.length >= minNumber) {
-      setButtonState(false);
-    } else {
-      setButtonState(true);
-    }
-  }
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -26,6 +16,19 @@ export default function Login() {
     history.push('/foods');
   }
 
+  useEffect(() => {
+    function validationCheck() {
+      const minNumber = 6;
+      if (email.match(/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/) // https://regexr.com/3e48o
+        && password.length >= minNumber) {
+        setButtonState(false);
+      } else {
+        setButtonState(true);
+      }
+    }
+    validationCheck();
+  }, [email, password]);
+
   return (
     <div>
       <form onSubmit={ handleSubmit } className="content">
@@ -35,10 +38,7 @@ export default function Login() {
             data-testid="email-input"
             id="email-input"
             placeholder="E-mail"
-            onChange={ ({ target }) => {
-              validationCheck();
-              setEmail(target.value);
-            } }
+            onChange={ ({ target }) => setEmail(target.value) }
           />
         </label>
 
@@ -48,10 +48,7 @@ export default function Login() {
             id="password-input"
             placeholder="Password"
             type="password"
-            onChange={ ({ target }) => {
-              validationCheck();
-              setPassword(target.value);
-            } }
+            onChange={ ({ target }) => setPassword(target.value) }
           />
         </label>
 

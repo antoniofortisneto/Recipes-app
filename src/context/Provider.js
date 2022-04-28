@@ -4,10 +4,20 @@ import context from '.';
 
 function Provider({ children }) {
   const [isSearchClicked, setSearchClicked] = useState(false);
+  const [search, setSearch] = useState('');
+  const [searchType, setSearchType] = useState('name');
+
+  const saveSearch = (searchField, type) => {
+    setSearch(searchField);
+    setSearchType(type);
+  };
 
   const contextValue = {
+    search,
+    searchType,
     isSearchClicked,
     setSearchClicked,
+    saveSearch,
   };
 
   return (
