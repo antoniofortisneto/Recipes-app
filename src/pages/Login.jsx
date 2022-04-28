@@ -31,7 +31,7 @@ export default function Login() {
 
   return (
     <div>
-      <form onSubmit={ handleSubmit }>
+      <form onSubmit={ handleSubmit } className="content">
         <h1>Login</h1>
         <label htmlFor="email-input">
           <input
