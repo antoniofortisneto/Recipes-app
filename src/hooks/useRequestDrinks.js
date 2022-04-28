@@ -1,11 +1,9 @@
 import { useContext, useEffect, useState } from 'react';
 import context from '../context';
-import { requestFoods } from '../services/apiFood';
-import { getParameterSearchMeal } from '../helpers/requestsHelper';
+import { requestDrinks } from '../services/apiDrink';
+import { getParameterSearchDrink } from '../helpers/requestsHelper';
 
-// https://www.themealdb.com/api/json/v1/1/search.php?s
-
-function useRequestFoods() {
+function useRequestDrinks() {
   const { search, searchType } = useContext(context);
   const [data, setData] = useState([]);
 
@@ -14,10 +12,10 @@ function useRequestFoods() {
       if (searchType === 'letter' && search.length > 1) {
         global.alert('Your search must have only 1 (one) character');
       }
-      const parameter = getParameterSearchMeal(searchType);
+      const parameter = getParameterSearchDrink(searchType);
       try {
-        const { meals } = await requestFoods(`${parameter}${search}`);
-        setData(meals);
+        const { drinks } = await requestDrinks(`${parameter}${search}`);
+        setData(drinks);
       } catch (error) {
         setData('Não foi encontrado nada na busca');
       }
@@ -28,4 +26,4 @@ function useRequestFoods() {
   return [data];
 }
 
-export default useRequestFoods;
+export default useRequestDrinks;

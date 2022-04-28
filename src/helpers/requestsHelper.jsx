@@ -1,15 +1,35 @@
-import { SEARCH_NAME, SEARCH_LETTER, FILTER_INGREDIENT } from '../services/apiFood';
+import {
+  MEAL_SEARCH_NAME,
+  MEAL_SEARCH_LETTER,
+  MEAL_FILTER_INGREDIENT,
+} from '../services/apiFood';
 
-export const getParameterSearch = (type) => {
+import {
+  DRINK_SEARCH_NAME,
+  DRINK_SEARCH_LETTER,
+  DRINK_SEARCH_INGREDIENT,
+} from '../services/apiDrink';
+
+export const getParameterSearchMeal = (type) => {
   console.log(`type ${type}`);
   switch (type) {
   case 'letter':
-    return SEARCH_LETTER;
+    return MEAL_SEARCH_LETTER;
   case 'ingredient':
-    return FILTER_INGREDIENT;
+    return MEAL_FILTER_INGREDIENT;
   default:
-    return SEARCH_NAME;
+    return MEAL_SEARCH_NAME;
   }
 };
 
-export const test = 'test';
+export const getParameterSearchDrink = (type) => {
+  console.log(`type ${type}`);
+  switch (type) {
+  case 'letter':
+    return DRINK_SEARCH_LETTER;
+  case 'ingredient':
+    return DRINK_SEARCH_INGREDIENT;
+  default:
+    return DRINK_SEARCH_NAME;
+  }
+};
