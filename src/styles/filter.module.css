@@ -1,0 +1,108 @@
+.container_search {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.search input {
+  border-radius: 10px;
+  height: 35px;
+  margin-bottom: 20px;
+  margin-top: 70px;
+  outline-color: #e19223;
+  width: 180px;
+}
+
+.container_search button {
+  background-color: #f0a132;
+  border: 1px solid black;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  height: 50px;
+  margin-top: 20px;
+  text-transform: uppercase;
+  width: 170px;
+}
+
+.container_search button:hover {
+  background-color: #ffa62b;
+  color: white;
+}
+
+.filters {
+  padding: 10px;
+}
+
+.filters input {
+
+  /*   display: none; */
+}
+
+/* referência https://jsfiddle.net/layercomp/12y7qeru/ */
+
+/* antes da label, crio o meu input customizado */
+.filters input + label:before {
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 4px;
+  content: '';
+  display: inline-block;
+  height: 22px;
+  margin-bottom: 8px;
+  margin-right: 8px;
+  vertical-align: middle;
+  width: 22px;
+}
+
+.filters input:checked + label:before {
+  background-color: rgb(178, 222, 20);
+  background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 10 10'%3E%3Cg class='nc-icon-wrapper' stroke-width='1' fill='%23555555'%3E%3Cpath fill='none' stroke='%23FFFFFF' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' data-cap='butt' d='M2.83 4.72l1.58 1.58 2.83-2.83'/%3E%3C/g%3E%3C/svg%3E");
+  background-position: center;
+}
+
+fieldset {
+  background-color: #ffa62b;
+  border: 1px solid #16697a;
+  color: black;
+}
+
+fieldset legend {
+  color: black;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.filters p {
+  font-weight: 600;
+  text-align: center;
+}
+
+.filters label {
+  font-size: 18 px;
+  margin: 4px;
+}
+
+/* @media screen */
+
+@media screen and ( min-width : 600px ) {
+
+  /* Nao remover */
+  .container_search {
+    flex-direction: row;
+    margin-top: 80px;
+  }
+
+  .search input {
+    margin-right: 10px;
+  }
+
+  .container_search button {
+    margin-left: 10px;
+  }
+}

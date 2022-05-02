@@ -6,19 +6,19 @@ class Input extends Component {
     const { type = 'text', name = '', label = '',
       onChange, value = '', placeholder = '', id = '' } = this.props;
     return (
-      <div className="">
-        <label htmlFor={ name }>
-          { label }
-        </label>
+      <div>
         <input
           type={ type }
           name={ name }
-          id={ name }
+          id={ id }
           value={ value }
           onChange={ onChange }
           placeholder={ placeholder }
           data-testid={ id }
         />
+        <label htmlFor={ id }>
+          { label }
+        </label>
 
       </div>
     );

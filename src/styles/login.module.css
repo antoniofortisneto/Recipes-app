@@ -1,0 +1,54 @@
+.login__container {
+  align-items: center;
+  background-image: url('../images/fundo.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  width: 100%;
+}
+
+.form__login {
+  align-items: center;
+  background-color: white;
+  box-shadow: 5px 5px 15px 2px black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0.8;
+  width: 350px;
+}
+
+.form__login h1 {
+  font-family: 'Libre Barcode 30 Extended Text' , cursive;
+}
+
+input, input:not( [ type = 'button' ] ), .form_login select {
+  border: 1px solid gray;
+  font-size: 20px;
+  height: 30px;
+  margin-top: 12px;
+  padding: 5px;
+  width: 250px;
+}
+
+.form__login button {
+  background-color: #299488;
+  border: none;
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 30px;
+  height: 60px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.form__login button:disabled {
+  background-color: lightgray;
+}
+
+.form__login button:hover {
+  background-color: #5c8e71;
+  color: white;
+}
