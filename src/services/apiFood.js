@@ -8,6 +8,7 @@ export const MEAL_AREA = 'list.php?a=';
 export const MEAL_CATEGORIES = 'list.php?c=';
 export const MEAL_INGREDIENTES = 'list.php?i=';
 export const MEAL_ALL_CATEGORIES = 'categories.php';
+export const MEAL_RANDOM = 'random.php';
 
 export const requestFoods = async (parameter, search = '') => {
   const response = await fetch(`${URL}${parameter}${search}`);

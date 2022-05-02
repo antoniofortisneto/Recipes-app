@@ -21,7 +21,6 @@ function MainContainer() {
       { isSearchClicked && <Search /> }
       { isFoods ? <FilterFood /> : <FilterDrink /> }
       { isFoods ? <Foods /> : <Drinks /> }
-
       <Footer />
     </section>
   );

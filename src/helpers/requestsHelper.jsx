@@ -3,6 +3,7 @@ import {
   MEAL_SEARCH_LETTER,
   MEAL_FILTER_INGREDIENT,
   MEAL_FILTER_CATEGORY,
+  MEAL_RANDOM,
 } from '../services/apiFood';
 
 import {
@@ -10,6 +11,7 @@ import {
   DRINK_SEARCH_LETTER,
   DRINK_SEARCH_INGREDIENT,
   DRINK_FILTER_CATEGORY,
+  DRINK_RANDOM,
 } from '../services/apiDrink';
 
 export const getParameterSearchMeal = (type) => {
@@ -21,6 +23,8 @@ export const getParameterSearchMeal = (type) => {
     return MEAL_FILTER_INGREDIENT;
   case 'category':
     return MEAL_FILTER_CATEGORY;
+  case 'random':
+    return MEAL_RANDOM;
   default:
     return MEAL_SEARCH_NAME;
   }
@@ -35,6 +39,8 @@ export const getParameterSearchDrink = (type) => {
     return DRINK_SEARCH_INGREDIENT;
   case 'category':
     return DRINK_FILTER_CATEGORY;
+  case 'random':
+    return DRINK_RANDOM;
   default:
     return DRINK_SEARCH_NAME;
   }

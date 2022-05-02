@@ -8,8 +8,11 @@ import { getParameterSearchMeal } from '../helpers/requestsHelper';
 function useRequestFoods() {
   const { search,
     searchType,
-    setDataFood, searchCategoryFood /* setCategoriesFoods */ } = useContext(context);
+    setDataFood,
+    searchCategoryFood,
+    isRecipeSurprise /* setCategoriesFoods */ } = useContext(context);
   const [data, setData] = useState([]);
+  const { isSurprise } = isRecipeSurprise;
 
   const route = searchCategoryFood !== 'All' ? 'category' : searchType;
   const type = searchCategoryFood !== 'All' ? searchCategoryFood : search;
@@ -29,7 +32,7 @@ function useRequestFoods() {
       }
     };
     request();
-  }, [search, searchType, setDataFood, searchCategoryFood, route, type]);
+  }, [search, searchType, setDataFood, searchCategoryFood, route, type, isSurprise]);
 
   return [data];
 }
