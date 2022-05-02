@@ -17,8 +17,6 @@ function SearchExplorer() {
   const splitRoute = route.split('/');
   const type = splitRoute[2];
 
-  console.log(choice, isSurprise);
-
   useEffect(() => {
     const request = async () => {
       try {
@@ -45,7 +43,7 @@ function SearchExplorer() {
       history.push(`/explore/${type}/${param}`);
       return;
     }
-    // Go to a random recipe details page (Meal or Drink)
+    // indica que a receita é surpresa, passando (foods or drinks)
     saveIsRandomRecipe(type, true);
   };
 

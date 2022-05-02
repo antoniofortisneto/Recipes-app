@@ -35,6 +35,7 @@ function Provider({ children }) {
       : 'All'));
   };
 
+  // Value = food ou drink, isActive é para informar se o botao de receita surpresa foi clicada
   const saveIsRandomRecipe = (value, isActive) => {
     setisRecipeSurprise(({ choice: value, isSurprise: isActive }));
   };
