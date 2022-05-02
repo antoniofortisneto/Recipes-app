@@ -11,7 +11,7 @@ function useRequestFoods() {
     setDataFood, searchCategoryFood /* setCategoriesFoods */ } = useContext(context);
   const [data, setData] = useState([]);
 
-  const rota = searchCategoryFood !== 'All' ? 'category' : searchType;
+  const route = searchCategoryFood !== 'All' ? 'category' : searchType;
   const type = searchCategoryFood !== 'All' ? searchCategoryFood : search;
 
   useEffect(() => {
@@ -20,7 +20,7 @@ function useRequestFoods() {
         global.alert('Your search must have only 1 (one) character');
       }
       try {
-        const parameter = getParameterSearchMeal(rota);
+        const parameter = getParameterSearchMeal(route);
         const { meals } = await requestFoods(parameter, type);
         setData(meals);
         setDataFood(meals);
@@ -29,7 +29,7 @@ function useRequestFoods() {
       }
     };
     request();
-  }, [search, searchType, setDataFood, searchCategoryFood, rota, type]);
+  }, [search, searchType, setDataFood, searchCategoryFood, route, type]);
 
   return [data];
 }

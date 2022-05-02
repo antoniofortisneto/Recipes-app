@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import context from '../context';
 import profileImage from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
+import styles from '../styles/header.module.css';
 
 function Header({ title, showSearch = false }) {
   const history = useHistory();
@@ -12,7 +13,7 @@ function Header({ title, showSearch = false }) {
   const handleChangeSearch = () => setSearchClicked(!isSearchClicked);
 
   return (
-    <nav>
+    <nav className={ styles.header }>
       <button type="button" onClick={ handleProfileClick }>
         <img
           src={ profileImage }

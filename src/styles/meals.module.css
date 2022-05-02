@@ -1,0 +1,145 @@
+.filter_container {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.filter_container button {
+  align-items: center;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  height: 50px;
+  justify-content: space-around;
+  margin: 4px;
+  width: 140px;
+}
+
+.filter_container .img_foods {
+  background-clip: padding-box;
+  background-image: url('../images/image_carrossel_meal.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  height: 180px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.filter_container .img_drinks {
+  background-image: url('../images/image_carrossel_drink.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  height: 180px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.card_filter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card_filter button {
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.btn_clicked {
+  background-color: #489fb5;
+  color: white;
+}
+
+.recipes_container {
+  align-items: center;
+  background-color: #489fb5;
+  border: 6px solid white;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 80px;
+  padding-bottom: 25px;
+  padding-top: 25px;
+}
+
+.card_recipes {
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  font-family: Arial , Helvetica , sans-serif;
+  height: 170px;
+  margin: 10px;
+  overflow-y: hidden;
+  padding: 5px;
+  text-align: center;
+  width: 140px;
+}
+
+.card_recipes:hover {
+  transform: translateY(-10px);
+  transition: all 0.6s;
+}
+
+.card_recipes img {
+  margin-top: -10px;
+  width: 120px;
+}
+
+.card_recipes button {
+  background-color: transparent;
+  border: none;
+  border-style: none;
+  cursor: pointer;
+}
+
+.title_filter_food {
+  color: white;
+  margin-top: 80px;
+  padding: 8px;
+  text-align: center;
+}
+
+.title_recipe_food {
+  color: black;
+  margin: 40px;
+  text-align: center;
+  text-decoration: line-through;
+  text-decoration-color: #ffa62b;
+  text-decoration-line: underline;
+}
+
+.title_recipe_drink {
+  color: black;
+  margin: 40px;
+  padding: 8px;
+  text-align: center;
+  text-decoration: line-through;
+  text-decoration-color: #489fb5;
+  text-decoration-line: underline;
+}
+
+.card_recipes h3 {
+  background-color: #f7f3f3;
+  font-size: 18px;
+}
+
+/* MEDIA SCREEN */
+
+@media screen and ( min-width : 420px ) {
+
+  /* nao remover */
+  .filter_container .img_foods {
+    height: 320px;
+  }
+
+  .filter_container .img_drinks {
+    height: 320px;
+  }
+}

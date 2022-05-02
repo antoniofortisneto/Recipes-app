@@ -1,0 +1,20 @@
+.header {
+  align-items: center;
+  background-color: #16697a;
+  border-bottom: 2px solid white;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.header button {
+  margin-right: 20px;
+}
+
+.header h1 {
+  font-size: 25px;
+}

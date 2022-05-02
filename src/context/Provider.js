@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import context from '.';
+import '../App.css';
 
 function Provider({ children }) {
   const [dataFood, setDataFood] = useState([]);

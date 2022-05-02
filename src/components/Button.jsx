@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 class Button extends Component {
   render() {
     const { label = '', onClick, disabled = false,
-      id = '', value = '', className = '' } = this.props;
+      id = '', value = '', className = '', img = '' } = this.props;
     return (
       <button
         type="button"
@@ -15,6 +15,7 @@ class Button extends Component {
         className={ className }
       >
         { label }
+        {img && (<img src={ img } alt={ value } />)}
       </button>
     );
   }
@@ -29,6 +30,7 @@ Button.propTypes = {
   label: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
   className: PropTypes.string,
+  img: PropTypes.string,
 };
 
 Button.defaultProps = {
@@ -36,4 +38,5 @@ Button.defaultProps = {
   value: '',
   className: '',
   disabled: false,
+  img: '',
 };

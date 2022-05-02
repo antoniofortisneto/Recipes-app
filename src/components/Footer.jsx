@@ -3,16 +3,11 @@ import { Link } from 'react-router-dom';
 import mealIcon from '../images/mealIcon.svg';
 import drinkIcon from '../images/drinkIcon.svg';
 import exploreIcon from '../images/exploreIcon.svg';
+import styles from '../styles/footer.module.css';
 
 export default function Footer() {
-  const footerClass = {
-    position: 'fixed',
-    bottom: 0,
-    left: 0,
-  };
-
   return (
-    <footer data-testid="footer" style={ footerClass } className="footer">
+    <footer data-testid="footer" className={ styles.footer }>
       <Link to="/drinks">
         <img
           src={ drinkIcon }
