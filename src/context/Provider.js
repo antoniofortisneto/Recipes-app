@@ -11,6 +11,12 @@ function Provider({ children }) {
   // const [categoriesFood, setCategoriesFoods] = useState([]);
   const [searchCategoryFood, setSearchCategoryFood] = useState('All');
   const [searchCategoryDrink, setSearchCategoryDrink] = useState('All');
+  const [isRecipeSurprise, setisRecipeSurprise] = useState(
+    {
+      choice: '',
+      isSurprise: false,
+    },
+  );
 
   const saveSearch = (searchField, type) => {
     setSearch(searchField);
@@ -29,6 +35,11 @@ function Provider({ children }) {
       : 'All'));
   };
 
+  // Value = food ou drink, isActive é para informar se o botao de receita surpresa foi clicada
+  const saveIsRandomRecipe = (value, isActive) => {
+    setisRecipeSurprise(({ choice: value, isSurprise: isActive }));
+  };
+
   const contextValue = {
     dataFood,
     setDataFood,
@@ -43,6 +54,9 @@ function Provider({ children }) {
     saveSearchCategoryFood,
     searchCategoryDrink,
     saveSearchCategoryDrink,
+    isRecipeSurprise,
+    setisRecipeSurprise,
+    saveIsRandomRecipe,
   };
 
   return (
