@@ -50,13 +50,14 @@ function SearchExplorer() {
   return (
 
     <section className={ styles.container_explore_by_type }>
-      <Button
-        value="ingredients"
-        onClick={ (e) => handleButtonClick(e.target.value) }
-        label="By Ingredient"
-        id="explore-by-ingredient"
-      />
-      {type === 'foods'
+      <section className={ styles.container_explore_buttons }>
+        <Button
+          value="ingredients"
+          onClick={ (e) => handleButtonClick(e.target.value) }
+          label="By Ingredient"
+          id="explore-by-ingredient"
+        />
+        {type === 'foods'
       && <Button
         value="nationalities"
         onClick={ (e) => handleButtonClick(e.target.value) }
@@ -64,12 +65,13 @@ function SearchExplorer() {
         id="explore-by-nationality"
       />}
 
-      <Button
-        value="surprise"
-        onClick={ (e) => handleButtonClick(e.target.value) }
-        label="Surprise me!"
-        id="explore-surprise"
-      />
+        <Button
+          value="surprise"
+          onClick={ (e) => handleButtonClick(e.target.value) }
+          label="Surprise me!"
+          id="explore-surprise"
+        />
+      </section>
     </section>
   );
 }

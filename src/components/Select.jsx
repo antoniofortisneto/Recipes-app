@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import styles from '../styles/formWallet.module.css';
 
 class Select extends Component {
   render() {
     const {
-      label,
-      name,
+      label = '',
+      name = '',
       onChange,
-      value,
-      id,
-      // defaultOption,
-      // defaultValue,
-      options,
+      value = '',
+      id = '',
+      options = '',
     } = this.props;
     return (
       <div className="">
@@ -28,8 +25,14 @@ class Select extends Component {
           value={ value }
         >
           {
-            options.map((option, index) => (
-              <option key={ index }>{ option }</option>
+            options.map(({ strArea }, index) => (
+              <option
+                key={ index }
+                data-testid={ `${strArea}-option` }
+              >
+                { strArea }
+
+              </option>
             ))
           }
         </select>
@@ -40,19 +43,22 @@ class Select extends Component {
 }
 
 Select.propTypes = {
-  label: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
+  label: PropTypes.string,
+  name: PropTypes.string,
+  id: PropTypes.string,
   onChange: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
   options: PropTypes.arrayOf(
-    PropTypes.string,
-  ).isRequired,
-  // defaultValue: PropTypes.string,
-  // defaultOption: PropTypes.string,
+    PropTypes.shape(),
+  ),
 };
 
 Select.defaultProps = {
+  label: '',
+  name: '',
+  id: '',
+  value: '',
+  options: '',
   // defaultValue: '',
   // defaultOption: 'Selecione',
 };

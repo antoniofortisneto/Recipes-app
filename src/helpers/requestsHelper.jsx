@@ -4,6 +4,8 @@ import {
   MEAL_FILTER_INGREDIENT,
   MEAL_FILTER_CATEGORY,
   MEAL_RANDOM,
+  MEAL_AREA,
+  MEAL_FILTER_AREA,
 } from '../services/apiFood';
 
 import {
@@ -17,6 +19,8 @@ import {
 export const getParameterSearchMeal = (type) => {
   // console.log(`type ${type}`);
   switch (type) {
+  case 'name':
+    return MEAL_SEARCH_NAME;
   case 'letter':
     return MEAL_SEARCH_LETTER;
   case 'ingredient':
@@ -25,6 +29,10 @@ export const getParameterSearchMeal = (type) => {
     return MEAL_FILTER_CATEGORY;
   case 'random':
     return MEAL_RANDOM;
+  case 'area':
+    return MEAL_AREA;
+  case 'filter-nationality':
+    return MEAL_FILTER_AREA;
   default:
     return MEAL_SEARCH_NAME;
   }

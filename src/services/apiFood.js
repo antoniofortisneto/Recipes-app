@@ -3,6 +3,7 @@ export const MEAL_SEARCH_NAME = 'search.php?s=';
 export const MEAL_SEARCH_LETTER = 'search.php?f=';
 export const MEAL_FILTER_INGREDIENT = 'filter.php?i=';
 export const MEAL_FILTER_CATEGORY = 'filter.php?c=';
+export const MEAL_FILTER_AREA = 'filter.php?a=';
 export const MEAL_LOOKUP = 'lookup.php?i=';
 export const MEAL_AREA = 'list.php?a=';
 export const MEAL_CATEGORIES = 'list.php?c=';
