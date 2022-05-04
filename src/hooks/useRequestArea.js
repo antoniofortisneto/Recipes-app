@@ -15,10 +15,9 @@ function useRequestArea() {
 
         const data = [...new Set(meals
           .reduce((acc, { strArea }) => [...acc, strArea], []))];
-
         setArea(data);
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     };
     request();
