@@ -1,7 +1,111 @@
+/* MAIN EXPLORER */
+
+/* referência da img */
+
+/* <a href='https://br.freepik.com/fotos-vetores-gratis/desenhado-a-mao'> a</a> */
+.explorer_container {
+  background-image: url('../images/fundo_explorer_food_drink.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+}
+
 .explore {
+  display: flex;
+  flex-direction: column;
   margin-top: 90px;
 }
 
+.explore a {
+  background-color: #489fb5;
+  border-radius: 20px;
+  color: white;
+  font-size: 20px;
+  margin: 20px;
+  padding: 40px;
+  text-decoration: none;
+}
+
+.explore a:hover {
+  background-color: #2f9bb6;
+  color: black;
+}
+
+/* BY FOOD OR DRIN */
 .container_explore_by_type {
+  background-image: url('../images/fundo_explorer_food_drink.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+}
+
+.container_explore_by_type button {
+  background-color: #489fb5;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+  margin: 10px;
+  padding: 35px;
+  width: 220px;
+}
+
+.container_explore_by_type button:hover {
+  background-color: #2f9bb6;
+  color: black;
+}
+
+.container_explore_buttons {
+  display: flex;
+  flex-direction: column;
   margin-top: 90px;
+}
+
+/* BY NATIONALITY */
+.div_select_nationality {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 90px;
+}
+
+.div_select_nationality select {
+  font-size: 20px;
+  font-weight: 600;
+  height: 35px;
+  width: 250px;
+}
+
+/* NOT FOUND */
+.not_found_container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+}
+
+.not_found_items {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.not_found_container img {
+  padding: 40px;
+  width: 350px;
+}
+
+.not_found_container img:nth-child( 1 ) {
+  width: 180px;
+}
+
+.not_found_container p {
+  margin-bottom: -70px;
 }

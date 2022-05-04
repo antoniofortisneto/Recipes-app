@@ -1,0 +1,25 @@
+.profile_container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.profile_items {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 90px;
+}
+
+.profile_items h2 {
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.profile_items button {
+  box-shadow: 3px 3px 4px 1px rgb(91, 189, 227);
+  font-size: 16px;
+  height: 60px;
+  margin: 10px;
+  width: 180px;
+}

@@ -17,6 +17,7 @@ function Provider({ children }) {
       isSurprise: false,
     },
   );
+  const [area, setArea] = useState('All');
 
   const saveSearch = (searchField, type) => {
     setSearch(searchField);
@@ -40,6 +41,11 @@ function Provider({ children }) {
     setisRecipeSurprise(({ choice: value, isSurprise: isActive }));
   };
 
+  // salva a origem da comida, ex: American
+  const saveArea = (areaValue) => {
+    setArea(areaValue);
+  };
+
   const contextValue = {
     dataFood,
     setDataFood,
@@ -57,6 +63,8 @@ function Provider({ children }) {
     isRecipeSurprise,
     setisRecipeSurprise,
     saveIsRandomRecipe,
+    area,
+    saveArea,
   };
 
   return (

@@ -6,7 +6,7 @@ import styles from '../styles/explore.module.css';
 
 function Explore() {
   return (
-    <section>
+    <section className={ styles.explorer_container }>
       <Header title="Explore" />
       <section className={ styles.explore }>
         <Link
