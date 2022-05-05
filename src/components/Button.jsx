@@ -10,12 +10,16 @@ class Button extends Component {
         type="button"
         onClick={ onClick }
         disabled={ disabled }
-        data-testid={ id }
         value={ value }
         className={ className }
+        data-testid={ id }
+        src={ img }
       >
         { label }
-        {img && (<img src={ img } alt={ value } />)}
+        {img && (<img
+          src={ img }
+          alt={ value }
+        />)}
       </button>
     );
   }
