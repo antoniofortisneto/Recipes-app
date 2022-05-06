@@ -1,0 +1,41 @@
+.main_image {
+  height: 150px;
+  width: 100%;
+}
+
+.header_details {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px;
+}
+
+.shareAndFavorite img {
+  margin-left: 18px;
+  margin-right: 10px;
+}
+
+.container_recommended {
+  display: flex;
+  overflow-x: auto;
+  width: 300px;
+}
+
+.cards button {
+  margin: 10px;
+}
+
+.cards img {
+  border: 1px solid lightgray;
+  border-radius: 20px;
+  font-family: Arial , Helvetica , sans-serif;
+  height: 140px;
+  padding: 5px;
+  text-align: center;
+  width: 135px;
+}
+
+.btn_start_recipe {
+  bottom: 0;
+  left: 0;
+  position: fixed;
+}
