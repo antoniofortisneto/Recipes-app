@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import styles from '../styles/login.module.css';
 import { getOneRecipeInProgress } from '../services/localStorage';
+import index from '../context/index';
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [buttonState, setButtonState] = useState(true);
   const history = useHistory(); // https://reactrouter.com/docs/en/v6/upgrading/v5
+  const { setUserEmail } = useContext(index);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -16,6 +18,7 @@ export default function Login() {
     localStorage.setItem('cocktailsToken', JSON.stringify(1));
     localStorage.setItem('user', JSON.stringify({ email }));
     getOneRecipeInProgress();
+    setUserEmail(email);
     history.push('/foods');
   }
 

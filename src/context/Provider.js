@@ -18,6 +18,7 @@ function Provider({ children }) {
     },
   );
   const [area, setArea] = useState('All');
+  const [userEmail, setUserEmail] = useState([]);
 
   const saveSearch = (searchField, type) => {
     setSearch(searchField);
@@ -65,6 +66,8 @@ function Provider({ children }) {
     saveIsRandomRecipe,
     area,
     saveArea,
+    userEmail,
+    setUserEmail,
   };
 
   return (
