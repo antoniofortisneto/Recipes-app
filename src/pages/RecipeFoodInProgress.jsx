@@ -8,9 +8,10 @@ import blackHeartIcon from '../images/blackHeartIcon.svg';
 import {
   saveFavoriteRecipe,
   getFavorite,
-  getRecipeInProgress,
+  // getRecipeInProgress,
 } from '../services/localStorage';
 import createItemFavorite from '../helpers/createItemFavorite';
+import createArrayIngredients from '../helpers/createArrayIngredients';
 
 const copy = require('clipboard-copy');
 
@@ -18,7 +19,7 @@ function RecipeFoodInProgress() {
   const [favor, setFavor] = useState(false);
   const [src, setSrc] = useState();
   const [label, setLabel] = useState('');
-  const [ingredients, setIngredients] = useState('');
+  // const [ingredients, setIngredients] = useState('');
   const { id } = useParams();
 
   const history = useHistory();
@@ -35,11 +36,17 @@ function RecipeFoodInProgress() {
       );
     };
     setFavorImg();
-    setIngredients(getRecipeInProgress(id, type));
+    // setIngredients(getRecipeInProgress(id, type));
   }, [favor, src, id, type]);
 
+  // const [recipes] = useRequestRecipeDetails(type);
   // one recipe by id
   const [data] = useRequestDetails(type, id);
+
+  let ingredients = [];
+  if (data) {
+    ingredients = createArrayIngredients(data);
+  }
 
   const saveFavorite = () => {
     setFavor((prev) => !prev);
@@ -107,16 +114,17 @@ function RecipeFoodInProgress() {
           <section>
             <h3>Ingredientes</h3>
             {
-              ingredients && ingredients.map((ingrAndMeasure, index) => (
+              ingredients
+              && ingredients.map((ingrAndMeasure, index) => (
                 <label
                   htmlFor={ index }
                   key={ index }
                   style={ { display: 'inline-block' } }
+                  data-testid={ `${index}-ingredient-step` }
                 >
                   <input
                     id={ index }
                     type="checkbox"
-                    data-testid={ `${index}-ingredient-step` }
                   />
                   { ingrAndMeasure }
                 </label>
@@ -142,7 +150,7 @@ function RecipeFoodInProgress() {
       { data && (
         <button
           type="button"
-          data-testid="start-recipe-btn"
+          data-testid="finish-recipe-btn"
           className={ styles.btn_start_recipe }
           onClick={ () => startRecipe() }
         >

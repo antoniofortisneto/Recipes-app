@@ -19,6 +19,7 @@ function Provider({ children }) {
   );
   const [area, setArea] = useState('All');
   const [userEmail, setUserEmail] = useState([]);
+  const [ingredientsInProgress, setIngredientsInProgress] = useState([]);
 
   const saveSearch = (searchField, type) => {
     setSearch(searchField);
@@ -68,6 +69,8 @@ function Provider({ children }) {
     saveArea,
     userEmail,
     setUserEmail,
+    ingredientsInProgress,
+    setIngredientsInProgress,
   };
 
   return (
