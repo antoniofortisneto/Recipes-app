@@ -74,3 +74,14 @@ export const saveFavoriteRecipe = (items) => {
     localStorage.setItem(FAVORITE_RECIPE, JSON.stringify(recipe));
   }
 };
+
+export const getRecipeInProgress = (id, type) => {
+  const recipes = getRecipeProgress();
+  const filter = {
+    foods: recipes.meals[id],
+    drinks: recipes.cocktails[id],
+    default: false,
+  };
+
+  return filter[type];
+};

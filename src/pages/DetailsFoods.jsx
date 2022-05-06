@@ -7,8 +7,6 @@ import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 
-// comentei
-
 import {
   getOneRecipeDone,
   saveRecipeProgress,
@@ -19,27 +17,16 @@ import {
 } from '../services/localStorage';
 import createArrayIngredients from '../helpers/createArrayIngredients';
 import createItemFavorite from '../helpers/createItemFavorite';
-import createItemRecipeInProgress from '../helpers/createItemRecipeInProgress';
 
 const copy = require('clipboard-copy');
 
 function DetailsFoods() {
   const [favor, setFavor] = useState(false);
-  const [src, setSrc] = useState();
   const [label, setLabel] = useState('');
   const { id } = useParams();
 
   useEffect(() => {
-    const setFavorImg = () => {
-      const isFavorite = getFavorite(id);
-      return (
-        isFavorite
-          ? setSrc(blackHeartIcon)
-          : setSrc(whiteHeartIcon)
-      );
-    };
-    setFavorImg();
-  }, [favor, src, id]);
+  }, [favor]);
 
   const history = useHistory();
   // foods or drinks
@@ -64,7 +51,7 @@ function DetailsFoods() {
     // se não tem chave criada
     if (recipeInProgress) {
       saveRecipeProgress(id, ingredients, type);
-      const item = createItemRecipeInProgress(type, data);
+      const item = createItemFavorite(type, data);
       saveRecipeDone(item);
       history.push(`/${type}/${id}/in-progress`);
     } else {
@@ -72,15 +59,24 @@ function DetailsFoods() {
     }
   };
 
-  const saveFavorite = () => {
+  const saveFavorite = (e) => {
+    e.preventDefault();
     setFavor((prev) => !prev);
-    const items = createItemFavorite(type, data);
-    saveFavoriteRecipe(items);
+    saveFavoriteRecipe(id, type, data);
   };
 
   const shareLink = () => {
     copy(`http://localhost:3000/${type}/${id}`);
     setLabel('Link copied!"');
+  };
+
+  const setFavorImg = () => {
+    const isFavorite = getFavorite(id);
+    return (
+      isFavorite
+        ? blackHeartIcon
+        : whiteHeartIcon
+    );
   };
 
   return (
@@ -116,12 +112,11 @@ function DetailsFoods() {
               </button>
               <button
                 type="button"
-                onClick={ () => saveFavorite() }
-                src={ src }
-                data-testid="favorite-btn"
+                onClick={ (e) => saveFavorite(e) }
               >
                 <img
-                  src={ src }
+                  data-testid="favorite-btn"
+                  src={ setFavorImg() }
                   alt="favorite"
                 />
               </button>
