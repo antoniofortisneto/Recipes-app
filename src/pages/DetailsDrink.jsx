@@ -6,6 +6,7 @@ import styles from '../styles/details.module.css';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
+import createItemRecipeInProgress from '../helpers/createItemRecipeInProgress';
 
 import {
   getOneRecipeDone,
@@ -26,14 +27,7 @@ function DetailsDrink() {
   const { id } = useParams();
 
   useEffect(() => {
-    // é favorito
-    const isFavorite = getFavorite(id);
-    console.log(isFavorite);
-    setFavor(isFavorite);
 
-    return () => {
-
-    };
   }, [favor, id]);
 
   const history = useHistory();
@@ -59,7 +53,7 @@ function DetailsDrink() {
     // se não tem chave criada
     if (recipeInProgress) {
       saveRecipeProgress(id, ingredients, type);
-      const item = createItemFavorite(type, data);
+      const item = createItemRecipeInProgress(type, data);
       saveRecipeDone(item);
       history.push(`/${type}/${id}/in-progress`);
     } else {
@@ -67,10 +61,10 @@ function DetailsDrink() {
     }
   };
 
-  const saveFavorite = (e) => {
-    e.preventDefault();
-    saveFavoriteRecipe(id, type, data);
+  const saveFavorite = () => {
     setFavor((prev) => !prev);
+    const items = createItemFavorite(type, data);
+    saveFavoriteRecipe(items);
   };
 
   const shareLink = () => {
@@ -80,12 +74,10 @@ function DetailsDrink() {
 
   const setFavorImg = () => {
     const isFavorite = getFavorite(id);
-    console.log(isFavorite);
-
     return (
       isFavorite
-        ? blackHeartIcon
-        : whiteHeartIcon
+        ? (blackHeartIcon)
+        : (whiteHeartIcon)
     );
   };
 
@@ -118,7 +110,7 @@ function DetailsDrink() {
               </button>
               <button
                 type="button"
-                onClick={ (e) => saveFavorite(e) }
+                onClick={ () => saveFavorite() }
               >
                 <img
                   data-testid="favorite-btn"

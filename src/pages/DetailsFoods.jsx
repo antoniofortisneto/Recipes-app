@@ -17,16 +17,27 @@ import {
 } from '../services/localStorage';
 import createArrayIngredients from '../helpers/createArrayIngredients';
 import createItemFavorite from '../helpers/createItemFavorite';
+import createItemRecipeInProgress from '../helpers/createItemRecipeInProgress';
 
 const copy = require('clipboard-copy');
 
 function DetailsFoods() {
   const [favor, setFavor] = useState(false);
+  const [src, setSrc] = useState();
   const [label, setLabel] = useState('');
   const { id } = useParams();
 
   useEffect(() => {
-  }, [favor]);
+    const setFavorImg = () => {
+      const isFavorite = getFavorite(id);
+      return (
+        isFavorite
+          ? setSrc(blackHeartIcon)
+          : setSrc(whiteHeartIcon)
+      );
+    };
+    setFavorImg();
+  }, [favor, src, id]);
 
   const history = useHistory();
   // foods or drinks
@@ -51,7 +62,7 @@ function DetailsFoods() {
     // se não tem chave criada
     if (recipeInProgress) {
       saveRecipeProgress(id, ingredients, type);
-      const item = createItemFavorite(type, data);
+      const item = createItemRecipeInProgress(type, data);
       saveRecipeDone(item);
       history.push(`/${type}/${id}/in-progress`);
     } else {
@@ -59,24 +70,15 @@ function DetailsFoods() {
     }
   };
 
-  const saveFavorite = (e) => {
-    e.preventDefault();
+  const saveFavorite = () => {
     setFavor((prev) => !prev);
-    saveFavoriteRecipe(id, type, data);
+    const items = createItemFavorite(type, data);
+    saveFavoriteRecipe(items);
   };
 
   const shareLink = () => {
     copy(`http://localhost:3000/${type}/${id}`);
     setLabel('Link copied!"');
-  };
-
-  const setFavorImg = () => {
-    const isFavorite = getFavorite(id);
-    return (
-      isFavorite
-        ? blackHeartIcon
-        : whiteHeartIcon
-    );
   };
 
   return (
@@ -112,11 +114,12 @@ function DetailsFoods() {
               </button>
               <button
                 type="button"
-                onClick={ (e) => saveFavorite(e) }
+                onClick={ () => saveFavorite() }
+                src={ src }
+                data-testid="favorite-btn"
               >
                 <img
-                  data-testid="favorite-btn"
-                  src={ setFavorImg() }
+                  src={ src }
                   alt="favorite"
                 />
               </button>

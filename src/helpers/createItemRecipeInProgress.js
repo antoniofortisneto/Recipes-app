@@ -1,4 +1,4 @@
-export default function createItemRecipeDone(type, data) {
+export default function createItemRecipeInProgress(type, data) {
   const item = {
     id: type === 'foods' ? data[0].idMeal : data[0].idDrink,
     type: type === 'foods' ? 'food' : 'drink',
