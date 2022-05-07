@@ -8,6 +8,8 @@ import blackHeartIcon from '../images/blackHeartIcon.svg';
 import {
   saveFavoriteRecipe,
   getFavorite,
+  getItemsChecked,
+  saveItemsChecked,
   // getRecipeInProgress,
 } from '../services/localStorage';
 import createItemFavorite from '../helpers/createItemFavorite';
@@ -19,6 +21,7 @@ function RecipeDrinkInProgress() {
   const [favor, setFavor] = useState(false);
   const [src, setSrc] = useState();
   const [label, setLabel] = useState('');
+  const [checkedState, setCheckedState] = useState(false);
   // const [ingredients, setIngredients] = useState('');
   const { id } = useParams();
 
@@ -37,7 +40,7 @@ function RecipeDrinkInProgress() {
     };
     setFavorImg();
     // setIngredients(getRecipeInProgress(id, type));
-  }, [favor, src, id, type]);
+  }, [favor, src, id, type, checkedState]);
 
   // const [recipes] = useRequestRecipeDetails(type);
   // one recipe by id
@@ -57,6 +60,28 @@ function RecipeDrinkInProgress() {
   const shareLink = () => {
     copy(`http://localhost:3000/${type}/${id}`);
     setLabel('Link copied!"');
+  };
+
+  const handleChange = ({ target: { className, value } }) => {
+    const element = document.getElementById(className);
+    // const sectionIngredients = document.getElementById(id);
+    // console.log(sectionIngredients);
+    if (element.style.textDecoration !== '') {
+      element.style.textDecoration = null;
+    } else {
+      element.style.textDecoration = 'line-through';
+    }
+    saveItemsChecked({ id: `${id}-${value}` });
+    setCheckedState((prev) => !prev);
+  };
+
+  const checkQuantity = () => {
+    const quantity = getItemsChecked().filter((e) => e.id.includes(id));
+    return quantity;
+  };
+
+  const doneRecipe = () => {
+    history.push('/done-recipes');
   };
 
   return (
@@ -113,23 +138,34 @@ function RecipeDrinkInProgress() {
           {/* INGREDIENTES-------------------- */ }
           <section>
             <h3>Ingredientes</h3>
-            {
-              ingredients
-              && ingredients.map((ingrAndMeasure, index) => (
-                <label
-                  data-testid={ `${index}-ingredient-step` }
-                  htmlFor={ index }
-                  key={ index }
-                  style={ { display: 'inline-block' } }
-                >
-                  <input
-                    id={ index }
-                    type="checkbox"
-                  />
-                  <p>{ ingrAndMeasure }</p>
-                </label>
-              ))
-            }
+            <section id={ id }>
+              {
+                ingredients
+                && ingredients.map((ingrAndMeasure, index) => (
+                  <label
+                    htmlFor={ index }
+                    id={ `${index}-ingredient-step` }
+                    key={ index }
+                    style={ getItemsChecked !== null
+                      && getItemsChecked().some((e) => e.id === `${id}-${index}`) ? (
+                        { textDecoration: 'line-through', display: 'inline-block' }
+                      ) : ({ display: 'inline-block' }) }
+                    data-testid={ `${index}-ingredient-step` }
+                  >
+                    <input
+                      checked={ getItemsChecked !== null
+                        && getItemsChecked().some((e) => e.id === `${id}-${index}`) }
+                      id={ index }
+                      type="checkbox"
+                      value={ index }
+                      className={ `${index}-ingredient-step` }
+                      onChange={ (e) => handleChange(e) }
+                    />
+                    { ingrAndMeasure }
+                  </label>
+                ))
+              }
+            </section>
             {/* INSTRUCTIONS */ }
             <div>
               <h3>Instructions</h3>
@@ -149,10 +185,11 @@ function RecipeDrinkInProgress() {
 
       { data && (
         <button
+          disabled={ checkQuantity().length !== ingredients.length }
           type="button"
           data-testid="finish-recipe-btn"
           className={ styles.btn_start_recipe }
-          onClick={ () => startRecipe() }
+          onClick={ () => doneRecipe() }
         >
           Finish Recipe
         </button>

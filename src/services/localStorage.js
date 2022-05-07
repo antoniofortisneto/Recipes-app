@@ -7,6 +7,9 @@ export const getRecipesDone = () => (JSON.parse(localStorage.getItem(RECIPE_DONE
 const FAVORITE_RECIPE = 'favoriteRecipes';
 export const getFavorRecipes = () => (JSON.parse(localStorage.getItem(FAVORITE_RECIPE)))
 || [];
+const ITEMS_CHECKED = 'itemsChecked';
+export const getItemsChecked = () => (JSON.parse(localStorage.getItem(ITEMS_CHECKED)))
+|| [];
 
 export const getOneRecipeInProgress = (id, type) => {
   const recipes = getRecipeProgress();
@@ -84,4 +87,16 @@ export const getRecipeInProgress = (id, type) => {
   };
 
   return filter[type];
+};
+
+export const saveItemsChecked = (obj) => {
+  let itemsChecked = getItemsChecked();
+  const checked = itemsChecked.some((e) => e.id === obj.id);
+
+  if (checked) {
+    itemsChecked = itemsChecked.filter((e) => e.id !== obj.id);
+  } else {
+    itemsChecked = [...itemsChecked, obj];
+  }
+  localStorage.setItem(ITEMS_CHECKED, JSON.stringify(itemsChecked));
 };
