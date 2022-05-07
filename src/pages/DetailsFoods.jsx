@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import useRequestDetails from '../hooks/useRequestDetails';
 import useRequestRecipeDetails from '../hooks/useRequestRecipeDetails';
@@ -6,6 +6,7 @@ import styles from '../styles/details.module.css';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
+import context from '../context/index';
 
 // comentei
 
@@ -28,6 +29,7 @@ function DetailsFoods() {
   const [src, setSrc] = useState();
   const [label, setLabel] = useState('');
   const { id } = useParams();
+  const { setIngredientsInProgress } = useContext(context);
 
   useEffect(() => {
     const setFavorImg = () => {
@@ -66,6 +68,7 @@ function DetailsFoods() {
       saveRecipeProgress(id, ingredients, type);
       const item = createItemRecipeInProgress(type, data);
       saveRecipeDone(item);
+      setIngredientsInProgress(item);
       history.push(`/${type}/${id}/in-progress`);
     } else {
       history.push(`/${type}/${id}/in-progress`);
