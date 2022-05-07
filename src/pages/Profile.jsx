@@ -1,22 +1,24 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Button } from '../components';
 import styles from '../styles/profile.module.css';
-import index from '../context/index';
 
 function Profile() {
   const history = useHistory();
-  const { userEmail } = useContext(index);
-
+  const emailStorage = localStorage.getItem('user')
+    ? JSON.parse(localStorage.getItem('user'))
+    : '';
   const handleRedirect = (path) => history.push(path);
 
   return (
     <section className={ styles.profile_container }>
       <Header title="Profile" />
       <div className={ styles.profile_items }>
-        <h2 data-testid="profile-email">{ userEmail }</h2>
+        <h2 data-testid="profile-email">
+          { emailStorage.email }
+        </h2>
         <Button
           label="Done Recipes"
           onClick={ () => handleRedirect('/done-recipes') }
