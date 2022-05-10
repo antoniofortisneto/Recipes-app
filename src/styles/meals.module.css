@@ -10,20 +10,22 @@
   border-radius: 10px;
   display: flex;
   flex-wrap: wrap;
-  height: 50px;
+  height: 55px;
   justify-content: space-around;
   margin: 4px;
-  width: 140px;
+  width: 155px;
 }
 
 .filter_container .img_foods {
+  align-items: center;
   background-clip: padding-box;
-  background-image: url('../images/image_carrossel_meal.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
+  background-image: url('../images/fundo1.jpg');
+  background-position: bottom;
+  background-repeat: repeat;
   background-size: cover;
   display: flex;
   height: 180px;
+  justify-content: center;
   margin-bottom: 20px;
   width: 100%;
 }
@@ -36,6 +38,11 @@
   height: 180px;
   margin-bottom: 20px;
   width: 100%;
+}
+
+.notfound {
+  color: red;
+  text-align: center;
 }
 
 .card_filter {
@@ -56,15 +63,14 @@
 
 .recipes_container {
   align-items: center;
-  background-color: #489fb5;
   border: 6px solid white;
   border-radius: 10px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 80px;
+  margin-bottom: 60px;
   padding-bottom: 25px;
-  padding-top: 25px;
+  padding-top: 1px;
 }
 
 .card_recipes {
@@ -83,6 +89,7 @@
 }
 
 .card_recipes:hover {
+  box-shadow: 3px 2px 10px 1px black;
   transform: translateY(-10px);
   transition: all 0.6s;
 }
@@ -108,7 +115,8 @@
 
 .title_recipe_food {
   color: black;
-  margin: 40px;
+  margin-bottom: 10px;
+  margin-top: 10px;
   text-align: center;
   text-decoration: line-through;
   text-decoration-color: #ffa62b;
@@ -117,7 +125,8 @@
 
 .title_recipe_drink {
   color: black;
-  margin: 40px;
+  margin-bottom: 10px;
+  margin-top: 10px;
   padding: 8px;
   text-align: center;
   text-decoration: line-through;
@@ -126,8 +135,9 @@
 }
 
 .card_recipes h3 {
-  background-color: #f7f3f3;
   font-size: 18px;
+  text-decoration-color: #489fb5;
+  text-decoration-line: underline;
 }
 
 /* MEDIA SCREEN */
@@ -141,5 +151,14 @@
 
   .filter_container .img_drinks {
     height: 320px;
+  }
+
+  .card_recipes {
+    height: 240px;
+    width: 240px;
+  }
+
+  .card_recipes img {
+    width: 180px;
   }
 }

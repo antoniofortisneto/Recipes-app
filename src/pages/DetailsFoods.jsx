@@ -88,7 +88,7 @@ function DetailsFoods() {
 
   return (
 
-    <section>
+    <section className={ styles.container_main }>
       { data && (
         <section>
           {/* IMAGEM-------------------- */ }
@@ -101,9 +101,15 @@ function DetailsFoods() {
 
           {/* TITLE-------------------- */ }
           <div className={ styles.header_details }>
-            <p data-testid="recipe-title">
-              { data[0].strMeal }
-            </p>
+            <div>
+              <p data-testid="recipe-title">
+                { data[0].strMeal }
+              </p>
+              {/* CATEGORY-------------------- */ }
+              <p data-testid="recipe-category">
+                { data[0].strCategory }
+              </p>
+            </div>
 
             {/* FAVORITE AND SHARE-------------------- */ }
             <section className={ styles.shareAndFavorite }>
@@ -132,25 +138,22 @@ function DetailsFoods() {
             </section>
           </div>
 
-          {/* CATEGORY-------------------- */ }
-          <p data-testid="recipe-category">
-            { data[0].strCategory }
-          </p>
-
           {/* INGREDIENTES-------------------- */ }
           <section>
-            <h3>Ingredientes</h3>
-            {
-              ingredients.map((ingrAndMeasure, index) => (
-                <p
-                  data-testid={ `${index}-ingredient-name-and-measure` }
-                  key={ index }
-                >
-                  { ingrAndMeasure }
-                </p>))
-            }
+            <div className={ styles.ingredients }>
+              <h3>Ingredientes</h3>
+              {
+                ingredients.map((ingrAndMeasure, index) => (
+                  <p
+                    data-testid={ `${index}-ingredient-name-and-measure` }
+                    key={ index }
+                  >
+                    { ingrAndMeasure }
+                  </p>))
+              }
+            </div>
             {/* INSTRUCTIONS */ }
-            <div>
+            <div className={ styles.instructions }>
               <h3>Instructions</h3>
               <textarea
                 name="textarea_instructions"
@@ -167,8 +170,6 @@ function DetailsFoods() {
             <iframe
               title="recipe-video"
               data-testid="video"
-              width="340"
-              height="315"
               src={ data[0].strYoutube.replace('watch?v=', 'embed/') }
               frameBorder="0"
               allow="autoplay"
@@ -178,7 +179,7 @@ function DetailsFoods() {
           </section>
 
           {/* Recomendações */ }
-          <h3>Recommended</h3>
+          <h3 className={ styles.recommended }>Recommended</h3>
           <div className={ styles.container_recommended }>
             { recipes && (
               recipes.map(({
@@ -202,16 +203,16 @@ function DetailsFoods() {
                       data-testid={ `${index}-recomendation-photo` }
                     />
                   </button>
-                  <h4
+                  <h3
                     data-testid={ `${index}-recomendation-category` }
                   >
                     { strAlcoholic }
-                  </h4>
-                  <h3
+                  </h3>
+                  <h4
                     data-testid={ `${index}-recomendation-title` }
                   >
                     { strDrink }
-                  </h3>
+                  </h4>
                 </section>
               ))) }
           </div>

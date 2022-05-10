@@ -4,21 +4,22 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import context from '../context';
 import useRequestExploreIngredients from '../hooks/useRequestExploreIngredients';
+import styles from '../styles/ingredients.module.css';
 
 function ExploreDrinksIngredients() {
   const [data] = useRequestExploreIngredients('drinks');
   const { saveSearch } = useContext(context);
   const history = useHistory();
   return (
-    <section>
+    <section className={ styles.ingredients_container }>
       <Header title="Explore Ingredients" />
-      <section>
+      <section className={ styles.card_container }>
         {
           data && data.map(({ strIngredient1 }, index) => (
             <div
               key={ index }
+              className={ styles.card }
               data-testid={ `${index}-ingredient-card` }
-              style={ { marginTop: '100px' } }
               role="presentation"
               onClick={ () => {
                 saveSearch(strIngredient1, 'ingredient'); history.push('/drinks');

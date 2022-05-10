@@ -28,9 +28,11 @@ function Drinks() {
   return (
     <>
       <h1 className={ styles.title_recipe_drink }>Drink Recipes</h1>
-      { !data ? <h2>Não foi encontrado nada na busca</h2> : (
-        <section className={ styles.recipes_container }>
-          { data.map(({ strDrink, strDrinkThumb, idDrink }, index) => index < twelve
+      { !data
+        ? <h2 className={ styles.notfound }>Não foi encontrado nada na busca</h2>
+        : (
+          <section className={ styles.recipes_container }>
+            { data.map(({ strDrink, strDrinkThumb, idDrink }, index) => index < twelve
             && (
               <section
                 key={ idDrink }
@@ -50,8 +52,8 @@ function Drinks() {
                 <h3 data-testid={ `${index}-card-name` }>{strDrink}</h3>
               </section>
             ))}
-        </section>
-      ) }
+          </section>
+        ) }
     </>
   );
 }

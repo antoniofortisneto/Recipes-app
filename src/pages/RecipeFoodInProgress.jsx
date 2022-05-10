@@ -85,7 +85,7 @@ function RecipeFoodInProgress() {
   };
 
   return (
-    <section>
+    <section className={ styles.container_main_inprogress }>
       { data && (
         <section>
           {/* IMAGEM-------------------- */ }
@@ -98,9 +98,15 @@ function RecipeFoodInProgress() {
 
           {/* TITLE-------------------- */ }
           <div className={ styles.header_details }>
-            <p data-testid="recipe-title">
-              { data[0].strMeal }
-            </p>
+            <div>
+              <p data-testid="recipe-title">
+                { data[0].strMeal }
+              </p>
+              {/* CATEGORY-------------------- */ }
+              <p data-testid="recipe-category">
+                { data[0].strCategory }
+              </p>
+            </div>
 
             {/* FAVORITE AND SHARE-------------------- */ }
             <section className={ styles.shareAndFavorite }>
@@ -129,17 +135,13 @@ function RecipeFoodInProgress() {
             </section>
           </div>
 
-          {/* CATEGORY-------------------- */ }
-          <p data-testid="recipe-category">
-            { data[0].strCategory }
-          </p>
-
           {/* INGREDIENTES-------------------- */ }
           <section>
-            <h3>Ingredientes</h3>
-            <section id={ id }>
-              {
-                ingredients
+            <fieldset>
+              <legend>Ingredientes</legend>
+              <section id={ id } className={ styles.ingredients }>
+                {
+                  ingredients
                 && ingredients.map((ingrAndMeasure, index) => (
                   <label
                     htmlFor={ index }
@@ -163,10 +165,11 @@ function RecipeFoodInProgress() {
                     { ingrAndMeasure }
                   </label>
                 ))
-              }
-            </section>
+                }
+              </section>
+            </fieldset>
             {/* INSTRUCTIONS */ }
-            <div>
+            <div className={ styles.instructions }>
               <h3>Instructions</h3>
               <textarea
                 name="textarea_instructions"
