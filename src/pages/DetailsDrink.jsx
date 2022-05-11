@@ -82,7 +82,7 @@ function DetailsDrink() {
   };
 
   return (
-    <section>
+    <section className={ styles.container_main }>
       { data && (
         <section>
           {/* IMAGEM-------------------- */ }
@@ -95,9 +95,15 @@ function DetailsDrink() {
 
           {/* TITLE-------------------- */ }
           <div className={ styles.header_details }>
-            <p data-testid="recipe-title">
-              { data[0].strDrink }
-            </p>
+            <div>
+              <p data-testid="recipe-title">
+                { data[0].strDrink }
+              </p>
+              {/* CATEGORY-------------------- */ }
+              <p data-testid="recipe-category">
+                { data[0].strAlcoholic }
+              </p>
+            </div>
 
             {/* FAVORITE AND SHARE-------------------- */ }
             <section className={ styles.shareAndFavorite }>
@@ -122,25 +128,22 @@ function DetailsDrink() {
             </section>
           </div>
 
-          {/* CATEGORY-------------------- */ }
-          <p data-testid="recipe-category">
-            { data[0].strAlcoholic }
-          </p>
-
           {/* INGREDIENTES-------------------- */ }
           <section>
-            <h3>Ingredientes</h3>
-            {
-              ingredients.map((ingrAndMeasure, index) => (
-                <p
-                  data-testid={ `${index}-ingredient-name-and-measure` }
-                  key={ index }
-                >
-                  { ingrAndMeasure }
-                </p>))
-            }
+            <div className={ styles.ingredients }>
+              <h3>Ingredientes</h3>
+              {
+                ingredients.map((ingrAndMeasure, index) => (
+                  <p
+                    data-testid={ `${index}-ingredient-name-and-measure` }
+                    key={ index }
+                  >
+                    { ingrAndMeasure }
+                  </p>))
+              }
+            </div>
             {/* INSTRUCTIONS */ }
-            <div>
+            <div className={ styles.instructions }>
               <h3>Instructions</h3>
               <textarea
                 name="textarea_instructions"
@@ -155,7 +158,7 @@ function DetailsDrink() {
           </section>
 
           {/* Recomendações */ }
-          <h3>Recommended</h3>
+          <h3 className={ styles.recommended }>Recommended</h3>
           <div className={ styles.container_recommended }>
             { recipes && (
               recipes.map(({ idMeal,

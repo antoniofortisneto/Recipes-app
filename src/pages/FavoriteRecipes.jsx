@@ -4,6 +4,7 @@ import { Button } from '../components';
 import Header from '../components/Header';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import shareIcon from '../images/shareIcon.svg';
+import styles from '../styles/doneRecipe.module.css';
 
 const copy = require('clipboard-copy');
 
@@ -18,7 +19,7 @@ function FavoriteRecipes() {
 
   const copyToClipBoard = (id, type) => {
     copy(`http://localhost:3000/${type}s/${id}`);
-    setLabelButton('Link copied!');
+    setLabelButton(id);
   };
 
   const removeFavorites = (id) => {
@@ -43,7 +44,7 @@ function FavoriteRecipes() {
   return (
     <section>
       <Header title="Favorite Recipes" />
-      <section style={ { marginTop: '100px' } }>
+      <section className={ styles.container_btn }>
         <Button
           label="All"
           onClick={ () => applyFilters('all') }
@@ -60,17 +61,18 @@ function FavoriteRecipes() {
           id="filter-by-drink-btn"
         />
       </section>
-      <section>
+      <section className={ styles.recipes_container }>
         { favorites
         && favorites.map(
           ({ nationality, category, alcoholicOrNot, name, image, type, id }, index) => (
-            <section key={ index }>
+
+            <section key={ index } className={ styles.card }>
               <Link to={ `/${type}s/${id}` }>
                 <img
-                  style={ { width: '200px' } }
                   src={ image }
                   alt={ image }
                   data-testid={ `${index}-horizontal-image` }
+                  className={ styles.img_recipe }
                 />
                 <h3 data-testid={ `${index}-horizontal-name` }>{name}</h3>
               </Link>
@@ -83,20 +85,26 @@ function FavoriteRecipes() {
                   {`${alcoholicOrNot}`}
                 </p>
               )}
-              <Button
-                onClick={ () => copyToClipBoard(id, type) }
-                id={ `${index}-horizontal-share-btn` }
-                img={ shareIcon }
-                label={ labelButton }
-              />
-              <Button
-                onClick={ () => removeFavorites(id) }
-                id={ `${index}-horizontal-favorite-btn` }
-                img={ blackHeartIcon }
-                label=""
-              />
+              <div className={ styles.social }>
+                <Button
+                  onClick={ () => copyToClipBoard(id, type) }
+                  id={ `${index}-horizontal-share-btn` }
+                  img={ shareIcon }
+                  label={ labelButton === id ? 'Link copied!' : '' }
+                  className={ styles.share_img }
+                />
+                <Button
+                  onClick={ () => removeFavorites(id) }
+                  id={ `${index}-horizontal-favorite-btn` }
+                  img={ blackHeartIcon }
+                  className={ styles.share_img }
+                  label=""
+                />
+              </div>
+
             </section>
           ),
+
         )}
       </section>
     </section>

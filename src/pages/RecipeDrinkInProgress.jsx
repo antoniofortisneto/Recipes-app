@@ -39,11 +39,8 @@ function RecipeDrinkInProgress() {
       );
     };
     setFavorImg();
-    // setIngredients(getRecipeInProgress(id, type));
   }, [favor, src, id, type, checkedState]);
 
-  // const [recipes] = useRequestRecipeDetails(type);
-  // one recipe by id
   const [data] = useRequestDetails(type, id);
 
   let ingredients = [];
@@ -86,7 +83,7 @@ function RecipeDrinkInProgress() {
 
   return (
 
-    <section>
+    <section className={ styles.container_main_inprogress }>
       { data && (
         <section>
           {/* IMAGEM-------------------- */ }
@@ -99,9 +96,15 @@ function RecipeDrinkInProgress() {
 
           {/* TITLE-------------------- */ }
           <div className={ styles.header_details }>
-            <p data-testid="recipe-title">
-              { data[0].strDrink }
-            </p>
+            <div>
+              <p data-testid="recipe-title">
+                { data[0].strDrink }
+              </p>
+              {/* CATEGORY-------------------- */ }
+              <p data-testid="recipe-category">
+                { data[0].strCategory }
+              </p>
+            </div>
 
             {/* FAVORITE AND SHARE-------------------- */ }
             <section className={ styles.shareAndFavorite }>
@@ -130,17 +133,14 @@ function RecipeDrinkInProgress() {
             </section>
           </div>
 
-          {/* CATEGORY-------------------- */ }
-          <p data-testid="recipe-category">
-            { data[0].strCategory }
-          </p>
-
           {/* INGREDIENTES-------------------- */ }
           <section>
-            <h3>Ingredientes</h3>
-            <section id={ id }>
-              {
-                ingredients
+            <fieldset>
+              <legend>Ingredientes</legend>
+              <div>
+                <section id={ id } className={ styles.ingredients }>
+                  {
+                    ingredients
                 && ingredients.map((ingrAndMeasure, index) => (
                   <label
                     htmlFor={ index }
@@ -148,7 +148,7 @@ function RecipeDrinkInProgress() {
                     key={ index }
                     style={ getItemsChecked !== null
                       && getItemsChecked().some((e) => e.id === `${id}-${index}`) ? (
-                        { textDecoration: 'line-through', display: 'inline-block' }
+                        { textDecoration: 'line-through' }
                       ) : ({ display: 'inline-block' }) }
                     data-testid={ `${index}-ingredient-step` }
                   >
@@ -164,10 +164,12 @@ function RecipeDrinkInProgress() {
                     { ingrAndMeasure }
                   </label>
                 ))
-              }
-            </section>
+                  }
+                </section>
+              </div>
+            </fieldset>
             {/* INSTRUCTIONS */ }
-            <div>
+            <div className={ styles.instructions }>
               <h3>Instructions</h3>
               <textarea
                 name="textarea_instructions"

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '../components';
 import Header from '../components/Header';
 import shareIcon from '../images/shareIcon.svg';
+import styles from '../styles/doneRecipe.module.css';
 
 const copy = require('clipboard-copy');
 
@@ -17,18 +18,16 @@ function DoneRecipes() {
 
   const copyToClipBoard = (id, type) => {
     copy(`http://localhost:3000/${type}s/${id}`);
-    setLabelButton('Link copied!');
+    setLabelButton(id);
   };
 
   const applyFilters = (typeFilter) => {
     const done = JSON.parse(localStorage.getItem('doneRecipes'));
-    if (typeFilter === 'all') {
+    if (typeFilter === 'all' && done !== null) {
       setDoneRecipes(done);
     }
-    if (typeFilter === 'food') {
-      setDoneRecipes(done.filter(({ type }) => type === typeFilter));
-    }
-    if (typeFilter === 'drink') {
+
+    if (typeFilter !== 'all' && done !== null) {
       setDoneRecipes(done.filter(({ type }) => type === typeFilter));
     }
   };
@@ -36,7 +35,7 @@ function DoneRecipes() {
   return (
     <section>
       <Header title="Done Recipes" />
-      <section style={ { marginTop: '100px' } }>
+      <section className={ styles.container_btn }>
         <Button
           label="All"
           onClick={ () => applyFilters('all') }
@@ -53,19 +52,19 @@ function DoneRecipes() {
           id="filter-by-drink-btn"
         />
       </section>
-      <section>
+      <section className={ styles.recipes_container }>
         { doneRecipes
         && doneRecipes.map(({
           category, name, image, doneDate, tags, nationality, alcoholicOrNot,
           id, type,
         }, index) => (
-          <section key={ index }>
+          <section key={ index } className={ styles.card }>
             <Link to={ `/${type}s/${id}` }>
               <img
-                style={ { width: '300px' } }
                 src={ image }
                 alt=""
                 data-testid={ `${index}-horizontal-image` }
+                className={ styles.img_recipe }
               />
               <h3 data-testid={ `${index}-horizontal-name` }>{name}</h3>
             </Link>
@@ -73,7 +72,8 @@ function DoneRecipes() {
               onClick={ () => copyToClipBoard(id, type) }
               id={ `${index}-horizontal-share-btn` }
               img={ shareIcon }
-              label={ labelButton }
+              label={ labelButton === id ? 'Link copied!' : '' }
+              className={ styles.share_img }
             />
             {alcoholicOrNot ? (
               <p
@@ -91,7 +91,7 @@ function DoneRecipes() {
             <p
               data-testid={ `${index}-horizontal-top-text` }
             >
-              {`${nationality} - ${category}`}
+              {/*  {`${nationality} - ${category}`} */}
             </p>
             <p data-testid={ `${index}-horizontal-done-date` }>{doneDate}</p>
             <ul>

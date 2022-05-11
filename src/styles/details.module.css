@@ -1,23 +1,68 @@
+.container_main {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 90px;
+}
+
+
 .main_image {
-  height: 150px;
+  background-size: cover;
+  height: 190px;
   width: 100%;
 }
 
 .header_details {
+  align-items: center;
+  background-color: white;
   display: flex;
   justify-content: space-between;
   margin: 8px;
+  padding: 8px;
+  width: 96%;
 }
 
-.shareAndFavorite img {
+.header_details button {
+  margin: 10px;
+}
+
+.ingredients h3, .instructions h3, .recommended {
+  background-color: rgb(213, 213, 210);
+  font-size: 18px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 5px;
+}
+
+.instructions textarea {
+  border: none;
+  font-size: 20px;
+  height: 250px;
+  max-width: 500px;
+  min-height: 250px;
+  min-width: 250px;
+  padding: 5px;
+  width: 99%;
+}
+
+
+.shareAndFavorite button {
   margin-left: 18px;
   margin-right: 10px;
+  width: 50px;
+}
+
+iframe {
+  height: 250px;
+  width: 100%;
 }
 
 .container_recommended {
+  align-items: center;
   display: flex;
+  margin-left: 10px;
   overflow-x: auto;
-  width: 300px;
+  width: 340px;
 }
 
 .cards button {
@@ -28,14 +73,65 @@
   border: 1px solid lightgray;
   border-radius: 20px;
   font-family: Arial , Helvetica , sans-serif;
-  height: 140px;
+  height: 150px;
   padding: 5px;
   text-align: center;
-  width: 135px;
+  width: 150px;
+}
+
+.cards h3, h4 {
+  margin-left: 10px;
 }
 
 .btn_start_recipe {
+  align-items: center;
+  background-color: #489fb5;
   bottom: 0;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  font-size: 22px;
+  font-weight: 600;
+  height: 80px;
+  justify-content: center;
   left: 0;
   position: fixed;
+  text-align: center;
+  width: 100%;
+}
+
+.container_main_inprogress {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 100px;
+}
+
+.ingredients {
+  display: flex;
+  flex-flow: column wrap;
+  font-size: 20px;
+  vertical-align: baseline;
+}
+
+.ingredients input {
+  display: inline-block;
+  height: 22px;
+  margin-bottom: 8px;
+  margin-left: 10px;
+  margin-right: 8px;
+  vertical-align: middle;
+  width: 22px;
+}
+
+@media screen and ( min-width : 420px ) {
+
+  .container_recommended {
+    width: 500px;
+  }
+
+  .instructions textarea {
+    width: 100%;
+  }
+
 }

@@ -6,9 +6,10 @@ import '../App.css';
 function Provider({ children }) {
   const [dataFood, setDataFood] = useState([]);
   const [isSearchClicked, setSearchClicked] = useState(false);
+  // input de busca
   const [search, setSearch] = useState('');
+  // filtros do component search
   const [searchType, setSearchType] = useState('name');
-  // const [categoriesFood, setCategoriesFoods] = useState([]);
   const [searchCategoryFood, setSearchCategoryFood] = useState('All');
   const [searchCategoryDrink, setSearchCategoryDrink] = useState('All');
   const [isRecipeSurprise, setisRecipeSurprise] = useState(
@@ -27,12 +28,20 @@ function Provider({ children }) {
   };
 
   const saveSearchCategoryFood = (category) => {
+    if (category === 'All') {
+      setSearch('');
+      setSearchType('name');
+    }
     setSearchCategoryFood((prevFood) => (prevFood !== category
       ? category
       : 'All'));
   };
 
   const saveSearchCategoryDrink = (category) => {
+    if (category === 'All') {
+      setSearch('');
+      setSearchType('name');
+    }
     setSearchCategoryDrink((prevDrink) => (prevDrink !== category
       ? category
       : 'All'));
@@ -55,6 +64,7 @@ function Provider({ children }) {
     searchType,
     isSearchClicked,
     setSearchClicked,
+    setSearchType,
     saveSearch,
     /* categoriesFood */
     /* setCategoriesFoods */

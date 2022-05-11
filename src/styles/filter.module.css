@@ -40,7 +40,7 @@
 
 .filters input {
 
-  /*   display: none; */
+  /* display: none; */
 }
 
 /* referência https://jsfiddle.net/layercomp/12y7qeru/ */
@@ -103,6 +103,7 @@ fieldset legend {
   }
 
   .container_search button {
+    margin-bottom: -10px;
     margin-left: 10px;
   }
 }
