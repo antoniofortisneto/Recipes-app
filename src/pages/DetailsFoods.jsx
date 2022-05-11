@@ -86,6 +86,10 @@ function DetailsFoods() {
     setLabel('Link copied!"');
   };
 
+  const goDetailsDrink = (idDrink) => {
+    history.push(`/drinks/${idDrink}`);
+  };
+
   return (
 
     <section className={ styles.container_main }>
@@ -195,7 +199,7 @@ function DetailsFoods() {
                 >
                   <button
                     type="button"
-                    onClick={ () => goDetailsMeal(idDrink) }
+                    onClick={ () => goDetailsDrink(idDrink) }
                   >
                     <img
                       src={ strDrinkThumb }

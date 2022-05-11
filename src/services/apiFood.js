@@ -13,7 +13,7 @@ export const MEAL_RANDOM = 'random.php';
 
 export const requestFoods = async (parameter, search = '') => {
   const response = await fetch(`${URL}${parameter}${search}`);
-  console.log(`${URL}${parameter}${search}`);
+  // console.log(`${URL}${parameter}${search}`);
   const json = await response.json();
 
   return response.ok ? Promise.resolve(json) : Promise.reject(json);

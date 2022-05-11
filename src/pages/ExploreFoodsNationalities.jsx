@@ -82,7 +82,6 @@ function ExploreFoodsNationalities() {
           }
         </section>
       ) }
-
       <Footer />
     </section>
   );
