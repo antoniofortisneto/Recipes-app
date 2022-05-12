@@ -190,7 +190,9 @@ function RecipeFoodInProgress() {
           disabled={ checkQuantity().length !== ingredients.length }
           type="button"
           data-testid="finish-recipe-btn"
-          className={ styles.btn_start_recipe }
+          className={ checkQuantity().length === ingredients.length
+            ? styles.btn_start_recipe
+            : styles.btn_disabled }
           onClick={ () => doneRecipe() }
         >
           Finish Recipe

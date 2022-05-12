@@ -9,7 +9,7 @@ export const DRINK_LIST_INGREDIENT = 'list.php?i=';
 
 export const requestDrinks = async (parameter, search = '') => {
   const response = await fetch(`${URL}${parameter}${search}`);
-  console.log(`${URL}${parameter}${search}`);
+  // console.log(`${URL}${parameter}${search}`);
   const json = await response.json();
 
   return response.ok ? Promise.resolve(json) : Promise.reject(json);

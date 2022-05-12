@@ -9,7 +9,8 @@ import { requestFoods } from '../services/apiFood';
 import styles from '../styles/explore.module.css';
 
 function SearchExplorer() {
-  const { saveIsRandomRecipe, isRecipeSurprise } = useContext(context);
+  const { saveIsRandomRecipe,
+    isRecipeSurprise, setisRecipeSurprise } = useContext(context);
   const { choice, isSurprise } = isRecipeSurprise;
 
   const history = useHistory();
@@ -23,12 +24,20 @@ function SearchExplorer() {
         if (isSurprise && choice === 'foods') {
           const parameter = getParameterSearchMeal('random');
           const { meals } = await requestFoods(parameter, '');
+          setisRecipeSurprise({
+            choice: '',
+            isSurprise: false,
+          });
           history.push(`/${choice}/${meals[0].idMeal}`);
         }
 
         if (isSurprise && choice === 'drinks') {
           const parameter = getParameterSearchDrink('random');
           const { drinks } = await requestDrinks(parameter, '');
+          setisRecipeSurprise({
+            choice: '',
+            isSurprise: false,
+          });
           history.push(`/${choice}/${drinks[0].idDrink}`);
         }
       } catch (error) {
@@ -36,7 +45,7 @@ function SearchExplorer() {
       }
     };
     request();
-  }, [isRecipeSurprise, isSurprise, history, choice]);
+  }, [isRecipeSurprise, isSurprise, history, choice, setisRecipeSurprise]);
 
   const handleButtonClick = (param) => {
     if (param !== 'surprise') {

@@ -81,6 +81,10 @@ function DetailsDrink() {
     );
   };
 
+  const goDetailsMeal = (idDrink) => {
+    history.push(`/drinks/${idDrink}`);
+  };
+
   return (
     <section className={ styles.container_main }>
       { data && (

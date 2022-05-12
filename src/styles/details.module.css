@@ -100,6 +100,23 @@ iframe {
   width: 100%;
 }
 
+.btn_disabled {
+  align-items: center;
+  background-color: #aeaeae;
+  bottom: 0;
+  color: black;
+  cursor: pointer;
+  display: flex;
+  font-size: 22px;
+  font-weight: 600;
+  height: 80px;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+}
+
 .container_main_inprogress {
   align-items: center;
   display: flex;
