@@ -1,4 +1,4 @@
-# [link Link to Website](https://recipe-project-trybe.surge.sh/)
+# [Click Here for a Live Demo](https://recipe-project-trybe.surge.sh/)
 <p>
 <img width="350" height="600" src="src/images/screen-capture_DPVRa32o.gif">
   <img width="350" height="600" src="src/images/screen-capture_Jkm8EMyb00.gif">
