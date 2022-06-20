@@ -1,4 +1,9 @@
 # [Click Here for a Live Demo](https://recipe-project-trybe.surge.sh/)
+>
+```
+the email must contain @ and .com and the password must be at least 7 characters long
+```
+>
 <p>
 <img width="350" height="600" src="src/images/screen-capture_DPVRa32o.gif">
   <img width="350" height="600" src="src/images/screen-capture_Jkm8EMyb00.gif">
