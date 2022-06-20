@@ -1,16 +1,48 @@
-# 🚧 README em construção 🚧
+# [link Link to Website](https://recipe-project-trybe.surge.sh/)
+# Recipes Project
+Last team Front-End project, there were 87 requirements, all with a certain degree of complexity; we had 9 days to finish it and we did it in 5.
+# About the app:
+An online recipe site that uses the resources of 2 different API's, one for food and the other for drinks.
+Api's (https://www.themealdb.com/api.php e https://www.thecocktaildb.com/).
 
-<!-- Olá, Tryber!
+# wrench Technologies Used
+```
+- React Hook useState;
 
-Esse é apenas um arquivo inicial para o README do seu projeto.
+- React Hook useContext;
 
-É essencial que você preencha esse documento por conta própria, ok?
+- React Hook useEffect;
 
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
+- Custom hooks;
 
-⚠️ IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
+- Css Module;
 
--->
+- React Testing Library.
+```
+
+# Features
+
+Below are some of the screens:
+
+Login;
+
+Food recipes with different filters;
+
+Beverage recipes with different filters;
+
+Search by nationalities and ingredients;
+
+Recipe details screen;
+
+Recipe preparation screen with step by step;
+
+Page of favorites and finished recipes.
+
+
+# Agile methodology used:
+
+Agile Kanban (Trello)
+diamonds Credits:
+It was amazing to develop this site, in addition to the knowledge sharing among the members:
+Fabiano Justino, Matheus Henrique e Leônidas Ferreira
+
