@@ -3,7 +3,8 @@
 <img width="350" height="600" src="src/images/screen-capture_DPVRa32o.gif">
   <img width="350" height="600" src="src/images/screen-capture_Jkm8EMyb00.gif">
 </p>
-  # Recipes Project
+
+ # Recipes Project
 Last team Front-End project, there were 87 requirements, all with a certain degree of complexity; we had 9 days to finish it and we did it in 5.
 # About the app:
 An online recipe site that uses the resources of 2 different API's, one for food and the other for drinks.
